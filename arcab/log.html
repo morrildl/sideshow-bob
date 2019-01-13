@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>The Saga of Sideshow Bob</title>
+        <link rel="stylesheet" type="text/css" href="main.css"/>
+    </head>
+
+    <body><div align="center">
+    <table cellspacing="20"><tr>
+        <td valign="top" width="120">
+            <jsp:include page="../sidebar.jsp" flush="true">
+                <jsp:param name="whichLink" value="none"/>
+            </jsp:include>
+        </td>
+        <td>
+            <h1>Digital Entertainment</h1>
+            <h2>The Saga of Sideshow Bob</h2>
+            <div class="entry">
+                <p>
+                As every right-thinking person knows, video games are cool, and
+                arcades rock.  Even supposing that the actual games themselves that
+        one finds in an arcade can't compete on a technological level with,
+        say, the latest PC games or a console, there is just something
+        primordially tactile about a physical piece of equipment, dedicated
+        to gaming, that has a certain intrinsic honor.
+        </p>
+        <p>
+         Physical arcades are public places, and the experience of gathering
+        with your buddies to have fun and play games, and perhaps challenge
+        all comers to best you in digital combat, is one not to be missed.
+        </p>
+        <p>
+        For these reasons, Zteve and I begat a project to build our own
+        arcade cabinet.  Well, actually to build <i>me</i> an arcade cabinet
+        since Zteve doesn't have room for one of his own.  The general idea
+        is to build a piece of furniture into which one places a PC and a
+        suitable display device (i.e. monitor or TV) and use it to play games.
+        </p>
+        <p>
+        We can play anything from the latest first-person shooter, to classic
+        arcade games.  Really, this creature is just an homage to the Arcade
+        Experience and simply adds a certain style and invokes a certain type
+        of feeling for the room it's placed in.
+        </p>
+        <p>
+        Anyway, that's all bullshit justification.  The fact is we don't need
+        any fscking "justification", so we're just doing it.  So there.
+        </p>
+        <p>
+        This site documents the development of Project: Sideshow Bob.
+        </p>
+        <p>
+        <i><small>Sideshow Bob is so named because it is a "sideshow" to
+        Project X74, the game that Steve and I are developing.  I think it's
+        turned out to be just as big and interesting as PX74, though.</small></i>
+        </p>
+            </div>
+	    <p/>
+            <h1>Chapter 1: Research</h1>
+            <div class="entry">
+                <h1>Has Anyone Done This Before?</h1>
+                <h2>Let's go to the web.</h2>
+                <p>
+        Has anyone done this before?!  <a href="http://www.google.com/search?q=arcade+cabinet&amp;sourceid=mozilla-search&amp;start=0&amp;start=0">oh good god, yes.</a>
+        We are not the first, and I have no doubt that we will not be the last.
+                </p>
+            </div>
+            <div class="entry">
+                <h1>Who Can We Rip Off?</h1>
+                <h2>Some links we found interesting</h2>
+        <ul>
+        <li>
+        <a href="http://www.arcadecontrols.com/arcade_cabinets.shtml">
+        A decent "getting started" FAQ;</a> one of several.
+        </li>
+        <li><a href="http://home.earthlink.net/~seanhat/arcade/arcade.htm">
+        Kind, kind LuSiD has a measured drawing up for his.</a> We are
+        basing our cabinet design on his.
+        </li>
+        <li><a href="http://cmdrtaco.net/jubei/">rob malda built one too.</a>
+        His came out really, really purty.  I don't have enough artistic talent
+        to make the detailing quite that ornate, but hopefully mine won't
+        turn out too badly.
+        </li>
+        <li>
+        <a href="http://www.happcontrols.com/">happ controls</a> sells
+        all the hardware you need.  We are only using joysticks and buttons.
+        (This may limit us for games like Centipede which rightfully require
+        a trackball or spinner, but oh well. At least for version 1.0 I am
+        keeping things simple.)</li>
+        <li><a href="http://www.ultimarc.com/">ultimarc.com</a> is run by
+        a bloke in the UK.  His product -- the IPAC -- is a keyboard
+        passthrough that lets you hook up widgets such as those peddled by
+        Happ Controls to a PC's keyboard port.  The device essentially maps
+        hardware switches (such as joysticks and pushbuttons) to keyboard
+        keys.  The IPAC also lets you hook up a full keyboard, which it
+        passes through uninterrupted.
+        </li>
+        <li>my pc is running <a href="http://www.redhat.com/">Red Hat
+        Linux,</a> because <a href="http://www.apress.com/book/bookdisplay.html?bid=16">i know a thing or two about it.</a></li>
+        </ul>
+            </div>
+	    <p/>
+            <h1>Chapter 2: Proof of Concept</h1>
+            <div class="entry">
+                <h1>Selecting Parts</h1>
+                <h2>Controlling ourselves</h2>
+                <p>
+        First we needed actual arcade parts.  So, I ordered an "Ultimate
+        Joystick", and 8 "ultimate Pushbuttons" from <a href="http://www.happcontrols.com/">happ controls.</a>
+        That got us started.
+                </p>
+            </div>
+            <div class="entry">
+                <h1>Getting Input</h1>
+                <h2>USB or not USB? That is the question.</h2>
+                <p>
+        Your average "game pad" is just a small circuit board, with "E"-shaped
+        contacts on the board, whose fingers interlace.  When you mash on a
+        button, a conducting plate shorts those fingers, and the game pad
+        registers a button press.
+        </p>
+        <p>
+        <a href="http://www.saitekusa.com/usa/prod/p150.htm">Here's a typical
+        game pad.</a>  pretty straightforward.  <a href="photos/p150-top.jpg">
+        Here's that same game pad gutted.</a> <a href="photos/p150-bottom.jpg">
+        Here's that same board, from the other side.</a>  You can probably
+        make out the points on the board where the buttons would go.
+        </p>
+        <p>
+        With this knowledge, I started to get down to business. I picked up
+        one of those controllers just mentioned (obviously,) and soldered
+        leads from the joystick's microswitches to the points on the board.
+        I suck at soldering, so this was a little something of a challenge
+        for me.  Eventually, though, I did get it to work.
+        </p>
+        <p>
+        Now, electrically this worked fine.  However, a guy at work who is
+        actually, like, an electrical engineer and has been doing this stuff
+        since the dawn of time warned me to be sure that the soldering
+        connections were "physically able" to withstand the strain.  I thought
+        he was worried about having the connections pop off the board.  I
+        was <b>mistaken.</b>
+        </p>
+        <p>
+        No, he was actually worried about the contact pads physically tearing
+        off the board, because the solder clings to the pads harder than the
+        pads cling to the boards.  Thusly was the P150 lost to me.  I could
+        probably have salvaged it, but a better solution presented itself
+        anyway.
+        </p>
+        <p>
+        Unfortunately, I didn't get any photos of the P150 wired to the
+        joystick.
+        </p>
+            </div>
+            <div class="entry">
+      <h1>A Better Solution</h1>
+      <h2>Enter the IPAC</h2>
+        At this point I figured it was time to check out this
+        <a href="http://www.ultimarc.com/">ipac thing</a> I'd heard about.
+        Basically, it does everything you could conceivably need it to do,
+        and comes with a terminal block to which you attach wires.  It just
+        doesn't get any simpler than that. <i>it just doesn't damnit!</i>
+        <p>
+        So, I ordered an IPAC.  <a href="photos/dcp_0531.jpg">wiring the joystick to it</a> was trivially
+        easy, especially since I'd already soldered up the joystick for the
+        P150, anyway.
+        </p>
+            </div>
+            <div class="entry">
+      <h1>Ready to Rock</h1>
+      <h2>What next?</h2>
+        Once I had the IPAC working, it was time to move along, and actually
+        start building a prototype.
+            </div>
+	    <p/>
+      <h1>Chapter 3: Prototype</h1>
+            <div class="entry">
+        <h1>Control Panelling</h1>
+      <h2>A joyful stick</h2>
+        <p>
+        What's an arcade cabinet without large, shiny, candy-like buttons
+        to press that respond with viscerally satisfying tactile
+        feedback?  Indeed, it is naught without them, and so it was time to
+        wire some buttons up to the IPAC too.
+        </p>
+        <p>
+        The problem with that is that you really can't wire up buttons until
+        you've mounted them into some kind of panel.  That meant it was time
+        Zteve and I hit the Home Despot and grabbed ourselves some wood-like
+        substance to start hacking up.
+        </p>
+        <p>
+        We picked up some medium-density fiberboard (MDF) and then prepared
+        a layout for the buttons.  Basically we did this by just putting my
+        hand on a piece of paper, marking where my fingers naturally laid, and
+        then centering the buttons on those points.  This produced two
+        "arcs" of buttons instead of rows.  This might sound strage, but there
+        are actually arcade cabinets that have this configuration.  We
+        copied this template onto a piece of paper, and prepared to start
+        making holes.
+        </p>
+        <p>
+        Zteve brought his tools, and away we went.  <a href="photos/dcp_0532.jpg">first we drilled holes for the joystick.</a> The stick actually includes
+        official dimensions for the stick, so we weren't (entirely) shooting
+        in the dark on that.
+        </p>
+            </div>
+            <div class="entry">
+      <h1>Pushing My Buttons</h1>
+      <h2>A sextuplet of holes</h2>
+        <p>
+        Next, we just took a copy of the button layout template, and taped
+        it to the MDF in what seemed like a decent spot, relative to the
+        joystick.  Zteve then drilled through the template directly into
+        the board.  The paper actually shredded pretty well, so it was
+        fortunate that we had the foresight to also mark the center points
+        of the buttons with small nail-marks.
+        </p>
+        <p>
+        After drilling the holes, <a href="photos/dcp_0533.jpg">we installed
+        the buttons.</a>
+	</p>
+            </div>
+            <div class="entry">
+      <h1>Common Ground</h1>
+      <h2>An iron hand</h2>
+        <p>
+        Since Zteve had not had the "pleasure" of working with a 
+        soldering iron recently, I let him make the connections between
+        the microswitches on the joystick and buttons.  (Those wires then
+        just screw into the IPAC terminal block.)
+        </p>
+        <p>
+        <a href="photos/dcp_0534.jpg">here's a picture of zteve's handiwork.</a>
+        You can also see the IPAC in that photo, connected to the keyboard and
+        PC as well.
+        </p>
+            </div>
+            <div class="entry">
+      <h1>Lessons Learned</h1>
+      <h2>Boy, did we botch this</h2>
+	<p>
+        We actually learned quite a bit from this experience.  Here are some
+        random notes, in no particular order.  We will be using these as
+        input into the next step, which is an actual attempt to build the
+        control box. The rest of the cabinet will follow.
+	</p><ul>
+        <li>The joystick should probably be rotated about 8 degrees or so
+        clockwise, for more comfort.  This means it won't be "square" to the
+        way the user is facing the cabinet, but it will be more comfortable
+        to use.  We'll just put some kind of marking on the cabinet's surface
+        to inform new users of this fact.</li>
+        <li>We didn't actually need to solder anything.  In fact, we should
+        probably NOT solder anything.  The IPAC already accepts its connections
+        via a terminal block, and the buttons' and joystick's switches have flat tabs
+        as connectors.  This means that we should be able to use those
+        flat "fast-attach connectors" (as I believe Radio Shack calls them)
+        to make installation easier, and make replacing parts MUCH easier.
+        This means we'll have to undo a non-trivial (but not huge) amount
+        of soldering. Oh well.</li>
+        <li>It turned out when we installed the buttons that we laid them out
+        so that they <i>just barely</i> fit next to each other.  However,
+        we didn't realize that the screw-on "nut" that secures the button to
+        the board from underneath is wider than the top of the buttons!  As
+        a result, it holds together okay for now, but we are going to have
+        to spread the buttons out a bit on the final copy. (In the
+        photo above, you can especially see this with the red buttons.)</li>
+        <li>We used flat-head screws to secure the joystick.  This was a good
+        start; however, we need to recess them.  Unfortunately we had no
+        counter-sink bit, so right now they are not.  This will be cool, because
+        with recessed flat-head screws, we can lay the contact paper right over
+        the top of the panel, and the screws won't even be visible at all.
+        In most cabinets I've seen, the screw heads are either visible, or
+        even worse, and look like they might get irritating after a while.</li>
+        </ul>
+	<p>
+        So, the prototype did exactly what it was supposed to do:  it taught
+        us some interesting details.  Now we feel well-equipped to translate
+        this information to the "final" (or at least, first cut of the final
+        version) of the control panel.
+	</p>
+        <p>
+        Even now, it's already supremely cool.  It's fun to just use the
+        prototype board instead of a joystick.  <a href="photos/dcp_0535.jpg">
+        Here's Zteve testing the board with Galaga.</a>
+	</p>
+            </div>
+	    <p/>
+      <h1>Chapter 4: Component Assembly</h1>
+            <div class="entry">
+    <h1>Selecting a TV</h1>
+    <h2>A sordid tale of woe</h2>
+        <p>
+        After much wishing and washing, I finally elected to go with a TV
+        for the display.  I reached this epiphany after Zteve, Will, and I took
+        a trip to an arcade, whereupon we realized after some examination
+        that basically no modern arcade machine uses a computer monitor; they
+        all use TVs.
+        </p>
+        <p>
+        So, I elected to purchase a 25" TV with S-Video input.  Of course,
+        this turned out to be difficult to find (apparently most manufacturers
+        don't think people who want 25" TVs want S-Video as well) and was
+        the source of no small amount of angst and heartache, as I was forced
+        to cancel my Barnes &amp; Noble Mastercard, mostly on principle since
+        MBNA was being fascist.
+        </p>
+        <p>
+        I still don't actually have my TV, which is irritating.  Apparently
+        now there's some kind of trouble with the vendor I bought it from,
+        no doubt because they are suspicious of three declined charges
+        followed by a successful charge with another card.
+        </p>
+        <p><b>Pfeh.</b></p>
+        <p>
+        Oh well, at least I know what I want, and all I have to do is find it.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Selecting a System</h1>
+    <h2>A costly decision</h2>
+        <p>
+        My initial plan had been to use a spare Compaq 450MHz Pentium II I
+        have here.  However, after examining it, I have concluded that it is
+        unsuitable for my purposes.
+        </p>
+        <p>
+        First of all, it's not a Pentium II; it says that on the case, but
+        the system itself says it's a Pentium Pro.  Also, it only has 96MB of
+        memory, which is probably inadequate.  Besides that, it weighs 7
+        metric tonnes, and has a really obnoxious layout inside the case, with
+        no expandability.  So yeah, Compaq sucks.  HP sucks just as much with
+        Compaq as they both did separately.
+        </p>
+        <p>
+        So, I had to order a 1.3GHz Athlon, 256MB of memory, semi-cheesy
+        NVidia card with TV-out, and a network card.  This cost me actual
+        dollars, but at least it'll be way more capable than that shitty-ass
+        Compaq.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Updating the Wiring</h1>
+    <h2>Rectifying mistakes</h2>
+        <p>
+        As mentioned earlier, the initial prototype assembly of the control
+        panel involved soldering the joints up.  This is the hard way to do
+        things, since it makes it difficult to disassemble the panel if you
+        need to replace parts.
+        </p>
+        <p>
+        So, I spent some time and (with some difficulty) unsoldered all the
+        joints and got the solder largely cleaned off the connector tabs.
+        Then I had to go to the local Ripoff Shack and locate some
+        fast-disconnect tab terminal connectors.  After a couple false starts
+        and another trip to obtain a suitable crimping tool, I was able to
+        wire everything up with the new connectors.
+        </p>
+        <p>
+        <a href="photos/dcp_0542.jpg">you can see the results here.</a>
+        This technique is highly recommended, and it works well.  I tested
+        the re-wired panel, and it continues to work fine.  The only other
+        comment I have is be sure to leave yourself plenty of wire when you
+        hook these things together;  a couple times I left myself pretty
+        tight in terms of space, and had to splice a couple wires as you
+        can see in the photo.  Eventually I just began erring on the side
+        of excess, which I recommend.  You might lose a little wire, but
+        it's better than screwing up a whole chain because you left a single
+        segment too short.  (This, obviously, only applies to the common ground
+        bus wire.  The actual signal leads are point-to-point and hard to
+        screw up.)
+        </p>
+            </div>
+	    <p/>
+      <h1>Chapter 5: Hardware Complete</h1>
+            <div class="entry">
+    <h1>The System</h1>
+    <h2>A real custom job</h2>
+        <p>
+        Ironically, the final system is more powerful than my desktop, by
+        a couple hundred megahertz.  That doesn't bother me much, though,
+        because I'm sure I'll upgrade my desktop eventually.
+	</p>
+            </div>
+            <div class="entry">
+    <h1>The Display</h1>
+    <h2>A boob's tube</h2>
+        <p>
+        After much wailing and gnashing of teeth, I finally have my TV.  It's
+        an RCA 25" jobbie that I paid strictly more for (due to shipping)
+        than I wanted to, but it was the only 25" TV I could find that has
+        S-Video in.  It also took over two weeks to arrive, because the
+        respective minor suckages of RCA and USF Worldwide shipping
+        combined with some kind of obnoxious synergy to become a right proper
+        pain in the arse.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>The Software</h1>
+    <h2>Speaking of ARSE...</h2>
+        <p>
+        Well, more on that in a moment.
+        </p>
+        <p>
+        At this point, the system is Hardware Complete&trade;.  This means
+        that I have all the (computer and electronic) hardware I need to do
+        the job (or, in the case of the second player's control parts, I have
+        the goods on order.)  It's worthwhile to do a process check.
+        </p>
+        <p>
+        Progress has been frankly slow lately, due to the difficulties I had
+        in pulling the equipment together.  Now, however, it's all over but the
+        elbow grease.
+        </p>
+        <p>
+        Next up is Configuration Complete.  By this I refer to that coveted
+        state in which the whole system will be functioning as I expect it
+        to:  i.e. the system will be using the TV as a display, MAME will
+        be installed, and so on.
+        </p>
+        <p>
+        That should be straightforward;  however, back to that arse business.
+        Zteve and I did some research and discovered that all MAME front-ends
+        suck.  Generally, they all assume you have a full keyboard, or
+        require an obnoxious full-on desktop environment like KDE or GNOME.
+        "Lightweight" apparently never enters into the equation.
+        </p>
+        <p>
+        As a result, Zteve and I are forced to write the Arcade ROM Selection
+        Environment -- ARSE.  The source for this creature will go up once
+        we have something that kind of mostly works.  It is being written in
+        ncurses, for simplicity;  I intend to just slap it up in a gigantic
+        xterm, more or less instead of an X window manager.
+        </p>
+        <p>
+        Excluding ARSE, I expect to be Configuration Complete this week, with
+        luck.  So far the biggest configuration chore was getting Red Hat 8
+        installed, but that's now behind me.  Everything else should be
+        ready to rock.... hopefully.
+        </p>
+            </div>
+	    <p/>
+      <h1>Chapter 6: configuration complete</h1>
+            <div class="entry">
+    <h1>Well, Not Quite</h1>
+    <h2>Getting there</h2>
+        <p>
+        After a hiatus of some weeks (due to various illnesses, vacations,
+        and holidays on Steve's and my parts,) we finally made some good
+        progress this week.  We're not quite configuration complete, but
+        we're getting there.  The following sections summarize our status.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>ARSE-Monster Steve</h1>
+    <h2>A true software virtuoso</h2>
+        <p>
+        Steve has taken our rough design for ARSE and actually implemented a
+        prototype.  Here's his status, in his own words.
+        </p>
+        <p/>
+<p>
+<big><b>ARSE 0.00001</b></big>
+</p>
+<p>
+        As Dan had mentioned before, pretty much every arcade ROM selector
+we found was either too presumptuous or severely broken. By presumpuous I
+mean wanting keyboard and mouse and usually, GTK. By severely broken I
+mean, well, even after massaging the Makefile and fiddling with bits of
+code, completely non-operational.
+</p>
+<p>
+        So, on a few scraps of paper, ARSE was born. (Gotta hand it to Dan
+for the bitchin' acronym...) We were guided by two basic principles,
+simple interface and no GUI.
+</p>
+<p>
+        You want a simple interface first off for ease of use. It
+shouldn't take more than a few taps on the joystick to get to the game you
+want to play. Second of all, our input options are severely limited,
+basically just the joystick and a few buttons.
+</p>
+<p>
+        As for the GUI, Sideshow Bob's guts consist of a fairly stripped
+down RedHat install, no room for big fancy window managers. (No ARSE does
+NOT need to do transparency...) However, I happen to be a big fan of
+ncurses. I think it's fun to work with and it produces some decent looking
+output.
+</p>
+<p>
+        With those two thoughts in mind, the plan for ARSE came together.
+We'd have two areas on the screen. The top is the input area. It contains
+a set of alphanumeric characters that can be selected using a joystick
+controlled cursor. Think of how you enter your initials into an arcade
+game. (Tap, tap, tap, "S", tap, tap, "E", tap, tap, tap, tap "Z"...) This
+allows you to spell out the first few letter of the game name you want to
+play.
+</p>
+<p>
+        The second area is a large, scrollable list of the games. As you
+select letters in the input area, ARSE appropriately selects the ROMs
+whose names match the key from the input area. I've found that with the
+current list of MAME ROMS (about 3600), it only takes about 3 characters
+before you're down to something less than 20 ROMS. This makes it much
+easier to select the ROM you want to play. So, with a little joystick
+jockeying and about 5 or 6 button presses, you're at your favorite game.
+</p>
+<p>
+<big><b>The Prototype</b></big>
+</p>
+<p>
+        With this in mind, Dan and I broke up the work. I would work on
+the ROM sorting/selection piece while he worked on the ncurses layout. Dan
+scored first and got a basic ncurses app running that presented two
+windows on the screen. (And even printed "Hello" in them...what a
+codewizard) This was checked into the ARSE CVS repository for my perusal.
+A few days later, I started hacking together a basic ROM sorter. Lemme
+tell you, I believe in the STL now more than ever. The rom_sort program
+just parsed a text file of ROM names, checked the path to the available
+ROMs, threw them in a vector, and away you go. After some user defined
+sort routines, I had a program that could take in a key and down-select to
+the set of ROMs that started with that key.
+</p>
+<p>
+        Everything was going great, well, until I got mono. That required
+me to sit around the house in a feverish stupor for about 2 weeks.
+However, at times, I did get the hankering to play with some ncurses, so I
+stole Dan's part and started building up the ncurses interface. I took his
+base and started throwing together the prototype.  After a few hours of
+coding, I had a functional ncurses interface that let you punch in rom
+names and switch between input and list areas.
+</p>
+<p>
+        So, after I recovered, Dan and I resumed our regular SSB meetings.
+At the last one, I finally bit the bullet and frankensteined the rom_sort
+code with the arse prototype interface. Amazingly enough, after a few
+unholy acts of code (which I won't go into being an embarrased software
+engineer) ARSE Version 0.00001 works. It allows a user to type in a ROM
+name and select from a ROM list that matches the input key. I just need to
+add an spawn() statement to fire off an appropriate UNIX command.
+</p>
+<p>
+        Enhancements to the prototype will include only displaying the
+ROMs that the user actually has (in the roms/ directory) and making a
+properties file so a user can tailor ARSE to their system. But so far, so
+good.
+</p>
+            </div>
+            <div class="entry">
+    <h1>Administrivia</h1>
+    <h2>We love you, OpenGL!</h2>
+        <p>
+        The primary problem as of the last update was that xmame looked like,
+        well, ass (and I don't mean ARSE.)  I had X running and so on, but
+        xmame in plain old X11 mode -- even with DGA -- just didn't have great
+        image quality.
+        </p>
+        <p>
+        After some searching, the XGL driver for MAME looked promising. So,
+        I tried hacking the xmame RPM to enable XGL mode, with little success.
+        I ran into some obnoxious Makefile issues.  After futzing with it
+        for a little while, I decided to search for pre-built RPMs of xmame
+        with the XGL driver.
+        </p>
+        <p>
+        I then did what I should have done in the first place, and checked
+        <a href="http://freshrpms.net">freshrpms.net</a>.  All hail the
+        almighty freshrpms.net!  They had pre-built MAME RPMs... with XGL
+        versions... for Red Hat 8.0.  Rock on!!
+        </p>
+        <p>
+        Getting XGL xmame running was a big win.  Looks great (it's
+        antialiased,) it can automagically do best-fit scaling, and can run
+        in full-screen mode.  At this point, I consider MAME ready to go.
+        </p>
+        <p>
+        Next step is to configure the system -- i.e. get X to start on boot,
+        configure it to run ARSE in an xterm, etc.  That's my current activity
+        while Steve cleans up ARSE.
+        </p>
+        <p>
+        At this point many of the details are pretty minor and straightforward.
+        Rather than detail them all here, I've created <a href="todo.jsp">a
+        separate task list page</a>.  That will reflect our current status.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Special Thank-You</h1>
+    <h2>Shout-out to my man Mike</h2>
+        <p>
+        Good old Mike has been a participant in spirit, if not in body, since we
+        started this thing. He may even be the first to clone this puppy, so
+        that Sideshow Bob has a sister system in Florida.
+        </p>
+        <p>
+        Recently Mike provided me with a vital piece of the system. It is
+        not a stretch to say that we would be in a tight situation if not for
+        Mike.
+        </p>
+        <p>
+        So, to thank Mike, <a href="http://www.zthing.com/zthings/yesmen">
+        everyone go here</a> and click it a couple times for Uvluv!
+        </p>
+            </div>
+	    <p/>
+      <h1>Chapter 6b: Configuration Complete</h1>
+            <div class="entry">
+    <h1>Major Milestone</h1>
+    <h2>A great piece of ARSE</h2>
+        <p>
+        Today, Steve put in a bit of code that lets ARSE execlp() a shell
+        script.  I then installed this on SSB, tweaked the script to actually
+        run MAME, and... oh my god.
+        </p>
+        <p>
+        <i>It works.</i>
+        </p>
+        <p>
+        It's not perfect;  it needs color and other prettying up, but overall
+        it is doing what we need.  You fire up ARSE, it shows you a list of
+        games, you enter letters to downselect the list, and then select
+        the game you want to play.  Whack enter and.... there you are.  Hit
+        ESC, and you bomb out to ARSE.
+        </p>
+        <p>
+        I, meanwhile, have not been idle. I now have X all set up (xinit
+        starts up an xterm with huge fonts for readability, etc.) and this
+        even starts up automatically on runlevel 5 via init.  With a trivial
+        tweak, I can even get the xterm to jump directly into ARSE!
+        </p>
+        <p>
+        With a few minor tweaks, I would boldly claim that Sideshow Bob is
+        complete -- if we were willing to tolerate having a keyboard attached.
+        However we're not, so we have to make some additional tweaks to it.
+        </p>
+        <p>
+        Oh man... this is amazing.  It's <i>real</i> now.  We're so close I
+        can taste it....
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Next Steps</h1>
+    <h2>Not quite there yet</h2>
+        <p>
+        So, what now?  Aside from Steve's "code hygiene" work, we have a few
+        things to work out still.  Mostly this is <a href="todo.jsp">recorded
+        on the todo list</a> but it is useful to outline a few major points
+        here.
+        </p>
+	<ul>
+        <li>improvements to arse (add color, remap keys to joysticks, etc.)</li>
+        <li>Add a frankensteined game pad so we can have 3 extra buttons for
+            ESCape-to-ARSE from w/in MAME, sound mute, and game pause</li>
+        <li>Add a frankensteined Radio Shack universal remote so we can power
+            on the TV (and shut it off) from the system unit</li>
+        <li>build a cabinet of wood and steel (and a little plastic)</li>
+        <li>resolve some bugs in mame (currently mame crashes a lot. doh.)</li>
+        </ul>
+        <p>
+        At this point I expect the bottleneck to be the cabinet;  we pretty
+        much know exactly what we have to do to get the rest working. Man...
+        we seem to be getting close.
+	</p>
+            </div>
+	    <p/>
+      <h1>Chapter 6c: Configuration Complete</h1>
+            <div class="entry">
+    <h1>For Real</h1>
+    <h2>Basically There</h2>
+        <p>
+        We made some good progress recently, and we're almost there. At the most
+        recent SSB meeting, Steve improved ARSE some and I worked on getting
+        the system to boot directly into ARSE.  Both are now working quite
+        well, and I'm going to declare Configuration Complete.
+        </p>
+        <p>
+        That leaves us with largely 2 tasks: polishing off some miscellaneous
+        details, and physically building the cabinet.  For the cabinet, Steve
+        and I have set aside a weekend during which we will simply... build the
+        cabinet.  The next section discusses some of the miscellaneous details
+        we have taken care of, and that still remain.  Mostly this is an
+        elaboration of the todo list.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Miscellania</h1>
+    <h2>Driving me insania</h2>
+        <p>
+        Once we got the TV, computer, ARSE, and MAME largely working together,
+        details started presenting themselves to us.
+        </p>
+        <p>
+        First, we realized that we need to somehow turn the TV on and off
+        with the system. TVs aren't monitors and so don't do things like Energy
+        Star DPMS power management.  Consequently we need a way for the PC to
+        turn the TV on during its boot cycle. (We could always just keep the
+        remote handy and do it ourselves, but that's a cop-out.) Ultimately we
+        decided to go buy a cheap universal remote and hack it up, so that
+        we can trigger its "power" button via a signal sent from the parallel
+        port to a transistor wired to the power button's contacts inside the
+        remote.  That still remains to be done.
+        </p>
+        <p>
+        Another thorny related problem is how we turn the PC itself on and off.
+        The problem is that it is an ATX system, meaning that when you shut the
+        system down it turns off the power supply, and the only way to turn it
+        back on is to hit the power button.  This is difficult if the PC is
+        inside a big wooden cabinet. Initially we'd intended to try and disable
+        or bypass ATX and control power externally with a power strip and use
+        a "big red button" wired to the interrupt-generating pin of the
+        parallel port to shut down the system.  However, we realized that we
+        could just invoke shutdowns from within ARSE, which is much cleaner.
+        Moreover, Mike then pointed out that there is a pair of pins on the
+        motherboard that the case power switch connects to, and that we could
+        simply replace the case power switch with an external button. I then
+        wired up a standard arcade button to these 2 pins on the motherboard,
+        and it works perfectly. We will simply install this "Big Red Button"
+        on the exterior of the cabinet, say on the side somewhere.
+        </p>
+        <p>
+        The IPAC happily does chording, which makes it easy for us to hit the
+        ESCAPE key to bomb out of MAME back to ARSE.  However, we discovered
+        that we can't remap ARSE to use the same keycodes that the IPAC and
+        MAME use by default, because some of them are keydown/keyup events
+        on meta characters (such as left control) that ncurses simply doesn't
+        ever see.  So, Steve is going to remap keys and then we'll have to
+        tweak the IPAC and MAME accordingly.
+        </p>
+        <p>
+        Once we have the remote control issue working, all we will have to do
+        is build the cabinet.  However, then we have to <i>paint</i> and
+        otherwise decorate the cabinet -- notably, we'll need art for the
+        marquee on the cabinet. This was a bit of a pickle, since neither
+        Steve nor I has much artistic talent.  Fortunately, Aimee's Mom
+        works as a graphic designer, and she kindly agreed to help us out!
+        so here's a big shout-out to aimee's mom! Sideshow Bob lives!
+        </p>
+        <p>
+        None of the issues above prevent us from having a functional system;
+        they're mostly just convenience.  As a result, I am declaring
+        Sideshow Bob officially configuration complete!
+        </p>
+            </div>
+	    <p/>
+      <h1>Intermission: Roll the Credits</h1>
+            <div class="entry">
+    <h1>I Get By...</h1>
+    <h2>...with a little help from my friends</h2>
+        <p>
+        It strikes me at this point how indebted I am on this project to the
+        people who have been helping me out.  It's almost like a community
+        project, now: Steve, of course, has been my partner all along;
+        Mike "Uvluv" provided crucial data; Mike (the other Mike) has made
+        several excellent and useful suggestions; my Dad is going to help us
+        with the cabinetry; Aussie has provided soldering tips and other
+        suggestions;  Aimee's Mom Debbie is going to help us with the
+        artwork.  It's amazing, really!
+        </p>
+        <p>
+        I'm almost going to feel guilty keeping this thing for myself when
+        it's done!  (Hey, I said almost. ;)
+        </p>
+            </div>
+	    <p/>
+      <h1>Chapter 7: Cabinet Construction Begins</h1>
+            <div class="entry">
+    <h1>Making Dreams a Reality...</h1>
+    <h2>...with power tools</h2>
+	<p>
+        Steve and I had an All-Holy Build the Arcade Cabinet, Already
+        Weekend&trade; yesterday and today.  We started out by reviewing the
+        plans we got from
+        <a href="http://home.earthlink.net/~seanhat/arcade/arcade.htm">lusid</a>
+        and coming up with a task order of assembly and working out some of
+        the smaller details, like precisely how we are going to mount the
+        control box onto the cabinet, etc.  We went through a bunch of options,
+        such as hinges, such as hinges, carriage bolts, cleats, removable
+        screws, etc., but finally settled on these details:
+	</p>
+	<ul>
+        <li>Due to weight and materials availability considerations, we are
+        using 5/8" particle board instead of MDF to build the bulk of the
+        cabinet; the control panel top is still MDF for "texture" reasons</li>
+        <li>Particle board doesn't paint quite as well as MDF, so we will be
+        using a deep glossy latex-based paint for the cabinet.</li>
+        <li>the control panel box <i>must</i> be removable; otherwise the
+        finished cabinet will be 34" inches wide which is too wide to fit
+        through many doorways. (The cabinet excluding the control panel is
+        only 27.5" wide.)</li>
+        <li>The control panel box will be screwed down onto a 2x4 segment
+        mounted in the cabinet (vs. screwed into the ends of the particle
+        board.</li>
+        <li>The monitor support inside the cabinet on which the TV will rest
+        will be supported by 2x4 segments forming cleats or rails on which
+        most of the TV's weight will rest (vs. screwing the ends of the support
+        directly into the walls of the cabinet, which would be less strong.)</li>
+        <li>The top of the control panel will be attached to the rest of the
+        control box via steel L-brackets mounted at the corners. (We considered
+        hinging the top and including locking brackets of some kind, but
+        eventually abandoned that since it was a lot of work/silliness for
+        something that you're not even going to do that often.)</li>
+        <li>The construction of the bulk of the cabinet will be done by
+        biscuit joints so as to avoid any visible external hardware (i.e.
+        screws) and for durability.</li>
+        <li>T-molding will be used on all visible edges of the cabinet
+        except the control panel, which will be rounded-edged via router for
+        comfort.</li>
+        </ul>
+	<p>
+        Otherwise, we are following LuSiD's plans pretty closely.  Steve has
+        an AutoCAD drawing of the cabinet which we are treating as the
+        official plans, and are working from paper while down in the dusty
+        basement.
+	</p>
+            </div>
+            <div class="entry">
+    <h1>Let It Begin</h1>
+    <h2>Sawdust is afoot</h2>
+        <p>
+        Once we had the plans worked out, we started the actual construction.
+        Essentially, the design requires around two and a half 4'x8' sheets
+        of 5/8" wood (for which we are using particle board.)  However, we
+        needed to buy 3 full sheets since there is a bunch of scrap that you
+        end up with after you cut out pieces.  Since we decided to do the
+        control panel top with 1/2" MDF (so that we can router the edge), we
+        actually have quite a bit more extra particle board area than LuSiD's
+        plans would normally have yielded us.  That was nice since it provided
+        us a very comfortable amount of breathing room.
+        </p>
+        <p>
+        Construction began in my dad's basement. He has a very nice selection
+        of tools, two of which are <i>highly recommended</i> if not imperative
+        for a project like this:  a circular saw, and a table saw.  If you
+        don't have a table saw you can probably get away with a circular saw,
+        but you really want a table saw if you can at all get one; it makes
+        life much, much easier.
+        </p>
+        <p>
+        So far we've cut up two of the 4' x 8' sheets, and have a pile of
+        parts.  In the next few days, we'll cut up the last sheet, and then
+        begin assembling the parts.  Assembly will most likely take us some
+        time, because we'll be using biscuited joints for strength;  it will
+        certainly take us longer than it might have if we were using screws.
+        You can't rush quality, I guess.
+        </p>
+        <p>
+        One thing that's become apparent is that this fscker is going to be
+        <i>heavy.</i>  It's not as heavy as it would have been with MDF, but
+        it's not going to be that much lighter either. This is not the kind
+        of thing that you're going to want to move around on a whim. Besides
+        that, we ended up deciding not to make it "disassembleable."  I simply
+        don't forsee myself ever taking it apart, even to move;  I'll take
+        the TV and computer out, of course, but I don't see how dismantling
+        the cabinet really buys you that much.  Hopefully, though, using the
+        particle board and thinner 5/8" material will keep things manageable.
+        </p>
+        <p>
+        We got a few photos of the beginning of the construction:
+	</p>
+	<ul>
+        <li><a href="photos/dcp_0474.jpg">the lines are drawn...</a></li>
+        <li><a href="photos/dcp_0475.jpg">the first cuts are made -- battle is joined!</a></li>
+        <li><a href="photos/dcp_0476.jpg">quite a pile of parts we're accumulating...</a></li>
+        </ul>
+        <p>
+        We also got a few photos of the current state of the electronics. (Next
+        time I'll have to remember to disable the camera flash.)
+	</p>
+	<ul>
+        <li><a href="photos/p1050032.jpg">the current guts of the system</a></li>
+        <li><a href="photos/p1050033.jpg">note the spiffy big red button (currently black) wired to the atx motherboard power header</a></li>
+        <li><a href="photos/p1050034.jpg">sideshow bob lives!</a></li>
+        <li><a href="photos/p1050035.jpg">bow before the (washed out) glory of arse! you may kiss it if you wish to.</a></li>
+        <li><a href="photos/p1050036.jpg">ssb in action</a></li>
+        <li><a href="photos/p1050037.jpg">sammy is excited too and can't wait for ssb to be finished!</a> he's a hardcore gamer cat.</li>
+        </ul>
+            </div>
+            <div class="entry">
+    <h1>Other Updates</h1>
+    <h2>Unannounced progress</h2>
+        <p>
+        There are a few other issues that haven't yet been discussed here.
+        I'll take care of them now.
+        </p>
+        <p>
+        We have altered the scheme for remote control/powering on the TV
+        again.  We realized that using a universal remote -- even one hacked
+        to take power from an external source and with the power button wired
+        to the parallel port, etc. -- was just too clumsy to use reliably.
+        We looked around for a more robust solution and found 
+        <a href="http://www.lirc.org/">the lirc project</a>.  That site
+        includes a schematic for building an infrared transmitter circuit,
+        which we will use with LIRC to turn on the TV directly from the host
+        computer, using the DTR signal of the RS232 port.  We intend to
+        essentially tape an IR LED on top of the IR sensor on the TV, with the
+        rest of the circuit wired to the serial port.
+        It should be quite cool; no intermediate remote required.
+        </p>
+        <p>
+        Steve has been working diligently on ARSE, and has improvements that
+        I haven't yet installed on the SSB hardware.  I need to do that soon.
+        </p>
+        <p>
+        We are planning to put together a "distribution" of everything
+        SSB-related (probably on SourceForge) for others to read and perhaps
+        make use of.  This will likely included a detailed measured drawing of
+        our plans, Steve's AutoCAD model, system configuration data (e.g.
+        my X configuration, init scripts, etc.), and ARSE.
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Mad Props</h1>
+    <h2>We couldn't do it without ya...</h2>
+        <p>
+        Earlier I referred to various power tools. Actually, I merely
+        <i>wish</i> I owned those tools.  In point of fact, my dad does, and
+        we're just using his.
+        </p>
+        <p>
+        Actually, aside from lending us his tools, my dad is also doing a lot
+        of the actual woodworking, since he's better at it than me (at least;
+        I don't know about Steve. :) So, this is a shout-out to our own
+        Master Carpenter, Dad!
+        </p>
+            </div>
+	    <p/>
+      <h1>Chapter 7b: Cabinet Construction Continues</h1>
+            <div class="entry">
+    <h1>Steps Forward, Steps Back</h1>
+    <h2>From preparation to assembly</h2>
+        <p>
+        Steve and I had a couple more assembly sessions since the last time
+        I updated.  As of today, we now have the bulk of the cabinet assembled.
+        We still have a few things to do, but we generally know how to do
+        them and can take care of them in pretty short order.</p>
+        <p>
+        By way of both explanation and illustration, here are some links.
+        Generally, one needs only review the plans for the cabinet linked to
+        earlier, and consult with these pictures for illustration of various
+        steps.</p>
+        <ul>
+        <li><a href="photos/dcp_0477.jpg">gluing the control box</a></li>
+        <li><a href="photos/dcp_0478.jpg">Dry-assembling the cabinet (no glue
+                                          yet) to test and lay out the angles
+                                          of the shelves for the TV and speakers
+            </a></li>
+        <li><a href="photos/dcp_0479.jpg">Testing a sample of the t-molding;
+                                          turns out that we DO actually need
+                                          the custom router bit; 1/8" isn't
+                                          close enough.</a></li>
+        <li><a href="photos/dcp_0480.jpg">A Box O' Electronics - future guts
+                                          of the cabinet</a></li>
+        <li><a href="photos/dcp_0481.jpg">The TV's stunt double, used for the
+                                          dangerous work of finalizing viewing
+                                          angles of the TV</a></li>
+        <li><a href="photos/dcp_0483.jpg">All final cuts made, and the cabinet
+                                          carcass assembled and glued</a></li>
+        <li><a href="photos/dcp_0482.jpg">Holy crap... this is really starting
+                                          to look like an actual arcade cabinet!
+            </a></li>
+        <li><a href="photos/dcp_0484.jpg">Cabinet's backside; note how the
+                                          rear panels are arranged. (The gap
+                                          will not be covered.)</a></li>
+        <li><a href="photos/dcp_0485.jpg">Close-up of the t-molding slot that
+                                          we've also already cut.</a></li>
+        <li><a href="photos/dcp_0486.jpg">The base of the cabinet, ready to
+                                          be installed once the rest is dry.
+            </a></li>
+        </ul>
+        <p>
+        It's worthwhile to discuss some construction notes, and a few snafus
+        we ran into.  Here they are in no particular order.
+        </p>
+        <ul>
+        <li>
+        <p>
+        We cut the t-molding slot before we assembled the cabinet, since it
+        would be unwieldy (at best) to try and do a thing like that after we'd
+        already assembled the thing.  However, it wasn't until we were well
+        into that I suddenly realized that the t-molding slot and biscuit slots
+        intersect one another.  That's a major problem, since the t-molding and
+        biscuits obtruct each other.
+        </p>
+        <p>
+        We can only conclude that no one else has done a biscuit installation
+        with these plans, or at least no one that we know of. At any rate, our
+        plan is to assemble the cabinet, and then do a quick clean-up pass with
+        the router to re-cut the t-molding slot.  Since we will be taking out
+        material from the biscuits, we are now slightly worried about the
+        structural integrity of the case, with compromised biscuits.
+        </p>
+        </li>
+        <li>To ameliorate the compromised-biscuit issue, we installed
+            glue-blocks in the interior corners of the cabinet. A glue-block
+            is simply a piece of scrap wood that you glue on two sides and
+            secure into the inside of a corner to increase strength.  We also
+            secured the blocks with metal brads as well as glue.
+        </li>
+        <li>We have not yet installed the monitor shelf and speaker shelf. We
+            are going to handle that last, securing them from the outside with
+            either screws or brads.  We just think it will be easier to do that
+            (since it's already going to be tricky enough) without having to
+            worry about biscuiting the things, having to deal with the rest of
+            the cabinet not being stable, etc.
+        </li>
+        </ul>
+        <p>
+        All in all, it's coming together nicely. I have already ordered the
+        bar stools that are to go along with the cabinet, since we're so
+        close.  My dad has a shop stool at the same height as the stools I
+        ordered (30 inches) and so I gave it a try;  it's damn near perfect.
+        I think it's really going to be great to sit on some stools with a
+        buddy and play classic arcade games for untold hours.
+        </p>
+        <p>
+        Woo hoo!!  I can taste it, damnit!
+        </p>
+            </div>
+            <div class="entry">
+    <h1>Next Steps</h1>
+    <h2>Now what?!</h2>
+        <p>
+        There isn't much left, and it's almost to the point where we're getting
+        down to brass tacks. (Well, there is no brass in this construction,
+        but I suppose someone might use some brass in their own cabinet. :)
+        Here is a list of things that remain to be done in roughly the order
+        they need to be done.
+        </p>
+        <ul>
+        <li>The base is assembled, but must be installed into the bottom of the
+            cabinet carcass</li>
+        <li>finalize a template for control layout on the control
+            panel, and then drill the holes
+        </li>
+        <li>round off the edges of the control panel top
+        </li>
+        <li>drill a hole in the back of the control panel for the
+            keyboard cable that will run to the computer
+        </li>
+        <li>drill a hole in the side of the control panel, where
+            we will install a button wired to the ATX power header, to turn
+            the thing on and off.
+        </li>
+        <li>install L-brackets to fasten control box to cabinet carcass
+        </li>
+        <li>install L-brackets to fasten control panel top to control box
+        </li>
+        <li>drill a hole in the back of the cabinet itself for the
+            power cord
+        </li>
+        <li>position and install the speaker shelf
+        </li>
+        <li>position and install the monitor shelf, with probably
+            2 crossmembers for strength.  (The design is going to be 2 1x4s
+            mounted to the insides of the cabinet that will function as "rails"
+            on which the monitor shelf will sit, with 2 cross-members between
+            them acting as stiffeners to prevent the shelf from sagging. The
+            arrangement will be similar to the cabinet base.)
+        </li>
+        <li>The cabinet has to be painted; we are currently leaning toward
+            probably a black matte, with most likely two coats and a
+            primer to get a good finish over the rather rough particle board
+        </li>
+        <li>install the t-molding (after painting)
+        </li>
+        <li>install/assemble electronics (i.e. TV and computer) and wiring
+        </li>
+        <li>work with Aimee's mom on the marquee artwork
+        </li>
+        <li>figure out a bezel solution (ideally, plexiglass across the whole
+            screen with some kind of border; perhaps work with Aimee's mom
+            again?)
+        </li>
+        <li>consider side art
+        </li>
+        </ul>
+        <p>
+        There are also a number of software-related kinks that still remain;
+        however, these are generally <a href="todo.jsp">covered in the todo
+        list</a> so I am not repeating them here.  Notably, the XGL MAME driver
+        crashes on certain games, and I need to test the latest version to
+        see if it's fixed.  There is also a smattering of work that needs to
+        be done on ARSE.
+        </p>
+        <p>
+        Overall, things are starting to come together.  We've been following
+        a greedy algorithm in doing this:  we keep iterating, adding new things
+        that pop up to our list of tasks.  Until now that list has always been
+        growing, and we never knew how much else still lied in wait for us.
+        Now, though, I feel like that list has stopped growing, and we can now
+        start picking them off one by one until.... we're finished.  At least
+        now we have a concrete list of exactly what remains, and we can start
+        ticking things off it quickly.
+        </p>
+        <p>
+        "Stay on target... just a few more seconds..."
+        </p>
+            </div>
+	    <div class="entry">
+		<h1>Nearing Completion</h1>
+		<h2>I love it when a plan comes together.</h2>
+		<p>
+			Sideshow Bob is now essentially construction complete.
+			The carcass of the cabinet is now fully assembled, glued,
+			nailed and variously screwed, and the control panel top
+			has been laid out and drilled.  First, some photos, and
+			then some comments.
+		</p>
+		<ul>
+		    <li><a href="photos/dcp_0487.jpg">Carcass after installing the
+						      monitor shelf support bars</a></li>
+		    <li><a href="photos/dcp_0488.jpg">Carcass with monitor shelf
+						      completely installed</a></li>
+		    <li><a href="photos/dcp_0489.jpg">Close-up of the monitor shelf;
+						      note the traced footprint of the TV</a></li>
+		    <li><a href="photos/dcp_0490.jpg">Entire cabinet with control panel
+						      set in place</a></li>
+		    <li><a href="photos/dcp_0491.jpg">Close-up of the control panel top,
+						      pre-drilling; note "out of bounds" lines</a></li>
+		    <li><a href="photos/dcp_0492.jpg">Control panel drilled with sticks and
+						      buttons set in place</a></li>
+		    <li><a href="photos/dcp_0493.jpg">Close-up of control panel; note guide lines</a></li>
+		    <li><a href="photos/dcp_0494.jpg">Fully-drilled and edge-rounded
+						      control panel top</a></li>
+		    <li><a href="photos/dcp_0495.jpg">90% complete cabinet, pre-painting</a></li>
+		</ul>
+		<p><big><b>Monitor Shelf</b></big><br/>
+			Because the TV is pretty heavy, we elected to augment
+			LuSiD's original design (which called for simply nailing
+			the monitor shelf to the sides of the cabinet) with a
+			stiffener H-style arrangement for the shelf to sit on.
+			We think this is just better structurally since it should
+			prevent the shelf from sagging over time.  To secure it,
+			we glued and brad-nailed the H-structure together, positioned
+			it at the desired angle (which we determined to be between 11 and
+			25 degrees for best viewing) according to taste, and then glued
+			and brad-nailed the monitor shelf on top of it.
+		</p>
+		<p>
+			We also traced out the footprint of the TV onto the monitor shelf
+			before installing it.  After getting the physical measurements
+			of the TV (i.e. height at the front and back) we were able to
+			verify that it all would fit into the cabinet before we permanently
+			nailed or glued anything;  it would suck to find that the TV won't
+			fit in after we've finished building the creature.
+		</p>
+		<p>
+			As a final comment, we chose the viewing angle of the TV (i.e. the
+			slope of the monitor shelf) according to two criteria:  how it
+			looks while standing, and while sitting.  I intend to use this thing
+			with a couple 30" high bar stools, so it needs to be playable in
+			both configurations.  We put the TV probably somewhere around
+			15 - 20 degrees off vertical.
+		</p>
+		<p><big><b>Control Panel</b></big><br/>
+			The next step was to lay out the controls on the control panel.
+			This was what we refer to -- in highly technical jargon --
+			as a "pain in the ass."  Basically it's not only detailed and
+			tedious, it's subjective.  You have to be very careful to get
+			it right the first time, because if you get it wrong you have to
+			do it all over again, and there are 26 holes you have to drill
+			and a ton of measurements to make before drilling to make one of
+			these.
+		</p>
+		<p>
+			To position the hardware, we first computed the measurements of
+			the interior of the control box, and drew those lines on top of
+			the control panel top as a sort of "out of bounds" line, so that
+			we had a visual cue as to how much real estate we actually have
+			to work with. Then we cut out two pieces of paper on which we
+			drew the center points of the control hardware -- i.e. it marked
+			the positions of buttons and the stick.  We laid out the buttons
+			and stick for one player's "station" on the paper, then traced
+			it to a second piece of paper, and then slid those around on
+			the control panel top until we were happy with positioning.
+		</p>
+		<p>
+			Once we had the papers in place, we made sure they were symmetrically
+			placed and then taped them down.  We marked the center-points of the
+			various holes to be drilled onto the wood itself by whacking the point
+			of a nail through the paper.  After that, we just drilled.
+		</p>
+		<p><big><b>Button Layout Tips</b></big><br/>
+			The trick to laying out the buttons is to know the minimum distance
+			apart you can place them without having their rings underneath collide.
+			This turns out to be 1 3/8".  You could just line up the buttons in
+			a straight-up grid, separating them by 1 3/8", but we wanted a more
+			natural layout, with the center buttons slightly above the other four,
+			to match the natural lengths of your fingers.
+		</p>
+		<p>
+			When we installed the buttons, we used this trick to make a template:
+		</p>
+		<ol>
+			<li>draw a line about 4 inches long with a straight-edge</li>
+			<li>draw a line perpendicular to the first line, about a half-inch
+			    in from the left</li>
+			<li>draw a second line parallel to the first line (and perpendicular
+			    to the second line) 1 3/8" above the first line</li>
+			<li>on the bottom line, draw a point about an inch or so away from
+			    the vertical line; this is the center point of the lower-left
+			    button</li>
+			<li>draw a point directly above the first point, but on the top line;
+			    this is the top-left button</li>
+			<li>measure in 2 7/8" from the first (bottom-left) line and make a
+			    second point;  this is the bottom-right button</li>
+			<li>directly above that point on the top line, make another mark;
+			    this is the top-right button</li>
+			<li>bisect the two parallel lines, and draw a second vertical line
+			    along the bisection</li>
+			<li>measure up this new line 1/4" and make a mark;  this is the
+			    bottom-middle button</li>
+			<li>measure up 1/4" along the midline from the top line, and make the
+			    final mark for the top-middle button</li>
+		</ol>
+		<p>
+			Those steps will get you a decent map for the button layout.
+			It'll be clearer once you do the drawing;  it's really quite simple.
+			After you've positioned the buttons on the paper, you can position
+			the center-point for the control stick to taste.  If you screw it
+			up, just start over with a new sheet of paper -- that's why you use
+			paper instead of drawing on the wood.
+		</p>
+		<p><big><b>Making Cuts</b></big><br/>
+			Once you have everything laid out and marked, you just have to
+			drill the holes.  We recommend taking this very slowly, and being
+			very cautious;  "Measure twice, cut once" as Norm Abram says.
+			We quickly got tired of this;  it is pretty tedious to drill 26
+			holes in succession, carefully measuring each one.  This is probably
+			the trickiest part of the whole cabinet-making operation, though,
+			so stay the course and make sure you get a quality product.
+		</p>
+		<p><big><b>Control Stick Notes</b></big><br/>
+			The four holes for the control sticks' bolts were drilled with a
+			counter-sink bit so that flat-head screw-bolts can be used to secure
+			the things while maintaining a perfectly flat playing surface.
+			We actually did these <i>after</i> laying out and drilling
+			everything else, because we weren't sure how to lay them out. There
+			are basically two choice: machine-oriented or player-oriented.  The
+			difference is this:  when you expect the players to stand at a slight
+			angle to the machine and put the buttons at that angle, do you have
+			the left-right axis of the stick be aligned with the angle the player
+			stands at (i.e. the player's right is the stick's right) or aligned
+			with the cabinet itself (i.e. the game's right is the stick's right.)
+			This is one for the ages, and is a matter of taste.  We chose
+			player-oriented controls.
+		</p>
+		<p><big><b>Final Notes</b></big><br/>
+			Once everything else was done, we drilled the four holes along
+			the top for the Player 1/Player 2 coin/start buttons by positioning
+			them 1" in from the top "out of bounds" line, and spacing them 2"
+			apart from each other.
+		</p>
+		<p>
+			The only thing remaining to be done is that we have to drill a
+			hole in the side of the box (under the lip of the panel top)
+			for the button that will be wired to the ATX header on the computer
+			motherboard.  We already drilled the hole through the back of the
+			case for the PS/2 keyboard cable that will connect the IPAC to the
+			computer.
+		</p>
+            </div>
+	    <div class="entry">
+		<h1>Construction Complete</h1>
+		<h2>Ship it!</h2>
+		<p>
+		After a few weeks' worth of evening and weekend time, the
+		cabinet is now <b>finished!</b>  That is, it's assembled,
+		painted, and trimmed with the t-molding.  This took some time
+		since we had to do three coats (primer and 2 topcoats) and you
+		have to let it dry in between.  However, it's now finished,
+		and it looks great!  Check out the Feast of Pictures below.
+		</p>
+		<ul>
+		<li><a href="photos/dcp_0496.jpg">
+		    Bottom of control panel top, demonstrating how we secure
+		    the top to the box
+		</a></li>
+		<li><a href="photos/dcp_0497.jpg">
+		    The cabinet carcass, primed and awaiting paint
+		</a></li>
+		<li><a href="photos/dcp_0498.jpg">
+		    Primed cabinet in profile
+		</a></li>
+		<li><a href="photos/dcp_0499.jpg">
+		    Cabinet with the first coat of paint
+		</a></li>
+		<li><a href="photos/dcp_0500.jpg">
+		    Painted cabinet from the front
+		</a></li>
+		<li><a href="photos/dcp_0501.jpg">
+		    Second coat
+		</a></li>
+		<li><a href="photos/dcp_0502.jpg">
+		    Control panel top, primed.
+		</a></li>
+		<li><a href="photos/dcp_0503.jpg">
+		    Control panel box, primed.  (Yes, I primed the inside.
+		    No, it doesn't need it;  I just had extra primer to use up.)
+		</a></li>
+		<li><a href="photos/dcp_0504.jpg">
+		    The whole shebang, painted!
+		</a></li>
+		<li><a href="photos/dcp_0505.jpg">
+		    The whole shebang from an angle
+		</a></li>
+		<li><a href="photos/dcp_0506.jpg">
+		    Dropped in the controls to see how it looks... oh, baby,
+		    you're too much!
+		</a></li>
+		<li><a href="photos/dcp_0507.jpg">
+		    Close-up of playing surface
+		</a></li>
+		<li><a href="photos/dcp_0508.jpg">
+		    <b>Behold!</b> the t-molding!
+		</a></li>
+		<li><a href="photos/dcp_0509.jpg">
+		    It's... it's DONE!  Huzzah!  Huzzah!
+		</a></li>
+		</ul>
+		<p>
+		There isn't much else to say;  painting isn't exactly rocket
+		science.  There are a few comments we can make, though.
+		</p><p>
+		First, a quick note on how we attached the control box to the
+		cabinet. Over the course of all this, we considered everything
+		from hinges to L-brackets to elaborate hook-and-clasp
+		mechanisms, but in the end settled on something quite simple.
+		As you can see in the first photo above, we just attached blocks
+		to the bottom of the control box top (using brads from above,
+		and glue) and then simply insert those blocks into the box
+		structure, and then screw through the sides of the box into
+		the blocks. (The box itself attaches to the cabinet via a
+		similar technique.)  This is easily accomplished by simply
+		screwing the blocks into the side of the control box
+		<i>first</i>, and then (carefully) bradding and gluing the
+		panel onto the blocks, and then unscrewing the blocks for
+		removal.  That way you have a good solid fit.  It turns out
+		that we probably don't even need to screw the box into the
+		cabinet, since friction holds it so well on its own.  The
+		panel top will have to be screwed in place, though, since there
+		is some lateral play front-to-back.
+		</p><p>
+		We did use quite a few brads on this little creation. We had
+		assumed that when we painted it, the brad marks would be
+		invisible.  It turns out that they're not.  By carefully
+		applying paint to at least reduce visibility, we have
+		something we're happy with, but the marks are still visible
+		if you look.  If we were to do it again we would try and fill
+		them with wood putty, as we did the screw holes for the
+		monitor shelf.  However, it's not a major defect.
+		</p><p>
+		Otherwise, that's pretty much it.  There are still a few small
+		details we have to take care of:  we are going to add some
+		shiny -- er, blinged out -- aluminum moldings on the kick plate
+		front and the sides along the bottom to prevent chipping and
+		similar damage, and we have to physically install the monitor
+		restraint bracket so that the TV doesn't slide around on the
+		shelf.  (This will be a small block of wood on the floor of the
+		monitor shelf that the TV rests against.)  We also have to
+		whip out a little gaffer's tape to cover over a few gaps between
+		boards on the back, and prevent light leakage.  These are very
+		minor, however.
+		</p><p>
+		There is also the matter of artwork, of course:  we need a
+		marquee at the top, and we are also thinking about ways to
+		get some nicely-decorated artwork for a lucite or plexiglass
+		bezel that we want to install in front of the TV screen for a
+		nice professional look.  So, it's time to talk to our artist
+		again -- Aimee's Mom, Debbie! (Hi, Debbie! :)
+		</p><p>
+		And so... I formally declare Construction Complete! The
+		computer for its part also is working quite well right now,
+		so we will just have to pop the box in, pop the TV in, and
+		wire the puppy up, and it's Game On -- literally! Yee ha!
+		</p>
+	    </div>
+	    <div class="entry">
+		<h1>Sideshow Bob Lives!</h1>
+		<h2>A Legend is Born.</h2>
+		<p>
+		Once we had the cabinet finished, Steve and I got the thing
+		moved and installed in its new home. In a not-quite-marathon
+		push (and thanks to the local Chinese delivery restaurant),
+		we then got the whole thing assembled, wired, and... working.
+		</p><p>
+		The thing works!  Sideshow Bob lives!  Check out these photos:
+		</p>
+		<ul>
+		<li><a href="photos/dcp_0666.jpg">
+		Sideshow Bob, with the (excellent!) bar stools from Deuster Co.
+		</a></li>
+		<li><a href="photos/dcp_0667.jpg">
+		A shot of just Bob;  notice the blinged-out aluminum kick-plate
+		protector at the bottom
+		</a></li>
+		<li><a href="photos/dcp_0671.jpg">
+		A close-up of the shiny, shiny goodness.
+		</a></li>
+		</ul>
+		<p>
+		There really isn't a great deal more to say.  I've already
+		commented on the wiring, the stools, and the cabinet.  This
+		was literally just putting it all together.
+		There are a few things that are worth mentioning though.
+		</p><p>
+		First, the paint.  I chose an eggshell/satin finish for the
+		paint, primarily because of the texture it provides.  Indeed,
+		the texture is excellent and does feel like an actual arcade
+		cabinet.  However, it's standard wall paint, and is not very
+		durable.  It got rather easily scuffed in the move.  Also,
+		that finish is still somewhat porous, making it feel tacky
+		on the control panel surface.  Were I to do this again, I would
+		absolutely choose to use an enamel finish, and as durable a
+		paint as I can find.
+		</p><p>
+		The only other thing to mention is the aluminum molding at the
+		bottom.  Steve and my dad strongly recommended this as a way
+		to protect the bottom edges so that they don't chip too badly,
+		especially at the toe kick plate area.  I didn't think that
+		was necessary, but it can't hurt and I agreed that it might
+		also look nice.  In point of fact, it looks <i>fantastic</i>,
+		and I highly recommend using it.  In fact, if I were to do it
+		again I might look for even more tasteful places to put it.
+		Another alternative might be to have used the shiny "chromed"
+		t-molding that you can get, instead of the black.  That might
+		also have looked awesome.
+		</p><p>
+		As is clearly evident from the photos, we still need artwork
+		for the marquee and bezel, and the fluroescent light for the
+		marquee backlight.  We also have yet to do the IR remote
+		control transmitter circuit that we will use to turn the TV
+		on and off.
+		</p><p>
+		However, none of that is especially difficult, and it's only
+		a matter of time at this point. As a result, I don't think
+		there is any reason to update this page again.  Steve and I
+		have discussed putting this whole project up on Sourceforge
+		(which would involve Steve's AutoCAD drawing, the ARSE source
+		code, and a HOWTO which would most likely be a heavily-editted
+		revision of this log.)  I think I'll just rely on that for
+		any future info.
+		</p><p>
+		So... I guess that's it for this space.  Wow, what a great
+		project.  <i>Vive le Sideshow Bob!</i>
+		</p>
+        </td></tr></table>
+
+        <span class="copyright">
+            All pages and art copyright &copy; 1999 - 2003 by
+	    Dan Morrill. All rights reserved.
+        </span>
+        <br/>
+        <a href="http://validator.w3.org/check/referer">
+           <img src="http://www.w3.org/Icons/valid-xhtml10"
+                alt="Valid XHTML 1.0!" height="31" width="88" />
+        </a>
+    </div></body>
+</html>
